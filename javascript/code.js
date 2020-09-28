@@ -181,7 +181,7 @@
             for(i = 0; i < numberOfMonsters; i++) {
                 let randomMonster = Math.floor(Math.random() * monsterArray.length);
                 let monster = document.createElement('img');
-                monster.src = 'images/' + monsterArray[randomMonster];
+                monster.src = './images/' + monsterArray[randomMonster];
                 monster.id = 'monsterImage';
                 monster.addEventListener('click', gameOver);
 
