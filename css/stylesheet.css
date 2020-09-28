@@ -1,0 +1,480 @@
+#gameMusic {
+    display: none;
+}
+
+#audio-groan {
+    display: none
+}
+
+#audio-advance {
+    display: none
+}
+
+#audio-confirmation {
+    display: none
+}
+
+#audio-gameover {
+    display: none
+}
+
+#audio-newhighscore {
+    display: none
+}
+
+#audio-timeout {
+    display: none
+}
+
+#audio-reset {
+    display: none
+}
+
+#instructions {
+    color: black;
+    font-size: large;
+}
+
+#monsterImage {
+    position: absolute;
+}
+
+#newHighScore {
+    font-size: smaller;
+    text-shadow: none;
+    color: black;
+    margin: 0px;
+    padding: 0px;
+}
+
+#showHighScore {
+    font-size: smaller;
+    text-shadow: none;
+    color: black;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.title-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-text {
+    width: 1024px;
+    padding: 0px;
+    margin: 0px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title-button {
+    width: 1024px;
+    padding: 5px;
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-button button {
+    padding: 10px;
+    margin: 10px
+}
+
+.tryagain-button {
+    padding: 10px;
+    margin: 10px
+}
+
+.scoreheading-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-heading {
+    width: 1024px;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.score-heading-left1 {
+    width: 235px;
+    padding: 0px 10px 0px 0px;
+    margin: 0px 10px 0px 0px;
+    border-top: 2px solid orange;
+    border-left: 2px solid orange;
+    border-right: 2px solid orange;
+    border-bottom: 0px;
+    border-radius: 45px 45px 0px 0px;
+    background-color: rgb(240, 160, 91);
+    opacity: 80%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: bolder;
+    text-shadow: 1px 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-heading-left2 {
+    width: 235px;
+    padding: 0px 10px 0px 0px;
+    margin: 0px 10px 0px 0px;
+    border-top: 2px solid dodgerblue;
+    border-left: 2px solid dodgerblue;
+    border-right: 2px solid dodgerblue;
+    border-bottom: 0px;
+    border-radius: 45px 45px 0px 0px;
+    background-color: royalblue;
+    opacity: 80%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: bolder;
+    text-shadow: 1px 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-heading-right {
+    width: 470px;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
+    border-top: 2px solid tomato;
+    border-left: 2px solid tomato;
+    border-right: 2px solid tomato;
+    border-bottom: 0px;
+    border-radius: 45px 45px 0px 0px;
+    background-color: rgb(244, 71, 71);
+    opacity: 80%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: bolder;
+    text-shadow: 1px 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-board {
+    width: 1024px;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.score-board-left1 {
+    width: 235px;
+    padding: 0px 10px 0px 0px;
+    margin: 0px 10px 0px 0px;
+    border-top: 0px;
+    border-left: 2px solid orange;
+    border-right: 2px solid orange;
+    border-bottom: 2px solid orange;
+    background-color: rgb(240, 160, 91);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-board-left2 {
+    width: 235px;
+    padding: 0px 10px 0px 0px;
+    margin: 0px 10px 0px 0px;
+    border-top: 0px;
+    border-left: 2px solid dodgerblue;
+    border-right: 2px solid dodgerblue;
+    border-bottom: 2px solid dodgerblue;
+    background-color: royalblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-board-right {
+    width: 470px;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
+    border-top: 0px;
+    border-left: 2px solid tomato;
+    border-right: 2px solid tomato;
+    border-bottom: 2px solid tomato;
+    background-color: rgb(244, 71, 71);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score {
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3em;
+    background-color: rgb(240, 160, 91);
+    color: white;
+    text-shadow: 1px 1px black;
+}
+
+.highscore {
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3em;
+    background-color: royalblue;
+    color: white;
+    text-shadow: 1px 1px black;
+}
+
+.timer {
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3em;
+    background-color: rgb(244, 71, 71);
+    color: white;
+    text-shadow: 1px 1px black;
+}
+
+.game-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-board {
+    width: 1024px;
+    padding: 20px;
+    margin: 20px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+    border-radius: 16px;
+}
+.game-board-left {
+    position: relative;
+    width: 470px;
+    height: 470px;
+    padding: 0px;
+    margin: 5px;
+}
+
+.game-board-middle {
+    height: 470px;
+    padding: 0px;
+    margin: 5px;
+    position: absolute;
+    border-left: 2px solid white;
+}
+
+.game-board-right {
+    position: relative;
+
+}
+
+.footer-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-board {
+    width: 1024px;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    width: 1024px;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
+    border-top: 2px solid royalblue;
+    border-left: 2px solid royalblue;
+    border-right: 2px solid royalblue;
+    border-bottom: 0px;
+    border-radius: 0px 0px 45px 45px;
+    background-color: dodgerblue;
+    opacity: 80%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: bolder;
+    text-shadow: 1px 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  .modal2 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .gameover-modal {
+    background-color: dodgerblue;
+    color: white;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 2px solid royalblue;
+    border-radius: 32px;
+    width: 25%;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    text-shadow: 1px 1px black;
+    text-align: center;
+  }
+
+  .highscore-modal {
+    background-color: dodgerblue;
+    color: white;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 2px solid royalblue;
+    border-radius: 32px;
+    width: 25%;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    text-shadow: 1px 1px black;
+    text-align: center;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close2 {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .close2:hover,
+  .close2:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }

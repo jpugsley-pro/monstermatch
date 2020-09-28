@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="images/favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="images/favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="images/favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="images/favicon/mstile-310x310.png" />
+
+    <title>Monster Match</title>
+    <link rel="stylesheet" href="/css/stylesheet.css" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="images/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="images/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="images/favicon/favicon-128.png" sizes="128x128" />
+</head>
+<body>
+    <div class="title-container">
+        <div class="title-text">
+            <img src="images/MonsterMatch.svg">
+        </div>
+    </div>
+    <div class="title-container">
+        <div class="title-button">
+           <button id="startGameButton" type="button">Start Game</button><button id="resetGameButton" type="button">Reset Game</button>
+        </div>
+    </div>
+    <div class="title-container">
+        <div class="title-text">
+            <p id="instructions"><img src="images/monstericon.svg" width="20" alt="Monster Icon" /> Find the hiding Monster on the left.</p>
+        </div>
+    </div>
+    <div class="scoreheading-container">
+        <div class="score-heading">
+            <div class="score-heading-left1">
+                <p>SCORE</p>
+            </div>
+            <div class="score-heading-left2">
+                <p>HIGH SCORE</p>
+            </div>
+            <div class="score-heading-right">
+                <p>TIMER</p>
+            </div>
+        </div>
+    </div>
+    <div class="score-container">
+        <div class="score-board">
+            <div class="score-board-left1">
+                <p class="score">0</p>
+            </div>
+            <div class="score-board-left2">
+                <p class="highscore">0</p>
+            </div>
+            <div class="score-board-right">
+                <p class="timer">00:00</p>
+            </div>
+        </div>
+    </div>
+    <div class="game-container">
+        <div class="game-board">
+            <div class="game-board-left">
+            </div>
+            <div class="game-board-middle">
+            </div>
+            <div class="game-board-right">
+            </div>
+        </div>
+    </div>
+    <div class="footer-container">
+        <div class="footer-board">
+            <div class="footer">
+            <p>&copy; 2020 Breed Games, LLC. All rights reserved.</p>
+            </div>  
+        </div>
+    </div>
+
+<!-- Modals -->
+<div id="gameOverModal" class="modal">
+  <div class="gameover-modal">
+    <span class="close">&times;</span>
+    <p>GAME OVER</p>
+    <p id="newHighScore"></p>
+    <p id="showHighScore"></p>
+    <p><button type="button" class="tryagain-button">Try Again?</button></p>
+  </div>
+</div>
+    <audio id="game-music" preload="auto" loop>
+        <source src="audio/Happy Kids Game Loop.wav" type="audio/wav">
+    </audio>
+    <audio id="audio-groan" preload="auto">
+        <source src="audio/Horror Ghoul Monster Pain 4.wav" type="audio/wav">
+    </audio>
+    <audio id="audio-advance" preload="auto">
+        <source src="audio/Collect Item.mp3" type="audio/mp3">
+    </audio>
+    <audio id="audio-confirmation" preload="auto">
+        <source src="audio/Game Level Start.mp3" type="audio/mp3">
+    </audio>
+    <audio id="audio-gameover" preload="auto">
+        <source src="audio/Game Over.mp3" type="audio/mp3">
+    </audio>
+    <audio id="audio-newhighscore" preload="auto">
+        <source src="audio/Celebration Medium.mp3" type="audio/mp3">
+    </audio>
+    <audio id="audio-timeout" preload="auto">
+        <source src="audio/Fail.mp3" type="audio/mp3">
+    </audio>
+    <audio id="audio-reset" preload="auto">
+        <source src="audio/Menu Confirmation.mp3" type="audio/mp3">
+    </audio>
+    <script type="text/javascript">
+
+        // init global variables
+        let numberOfMonsters = 5;
+        let currentScore = 0;
+        let highScore = 0;
+        let counter = 0;
+        let gameTimer;
+        const monsterArray = ['AlienMonster.svg', 'AnnoyingMonster.svg', 'HappyMonster.svg', 'MonsterMascot.svg', 'MoshiMonster.svg'];
+
+        // init buttons
+        const startGameButton = document.getElementById('startGameButton');
+        const resetGameButton = document.getElementById('resetGameButton');
+
+        // audio
+        const gameMusic = document.getElementById('game-music');
+        const audioGroan = document.getElementById('audio-groan');
+        const audioAdvance = document.getElementById('audio-advance');
+        const audioConfirmation = document.getElementById('audio-confirmation');
+        const audioGameOver = document.getElementById('audio-gameover');
+        const audioNewHighScore = document.getElementById('audio-newhighscore');
+        const audioTimeout = document.getElementById('audio-timeout');
+        const audioReset = document.getElementById('audio-reset');
+
+        // game and scoreboard
+        const scoreBoard =  document.getElementsByClassName('score-board-left');
+        const timerBoard =  document.getElementsByClassName('score-board-right');
+        const timer = document.getElementsByClassName('timer');
+        const score = document.getElementsByClassName('score');
+        const high = document.getElementsByClassName('highscore');
+        const gameLeft = document.getElementsByClassName('game-board-left');
+        const gameRight =  document.getElementsByClassName('game-board-right');
+
+        // init global event listeners
+        startGameButton.addEventListener('click', startGame);
+        resetGameButton.addEventListener('click', resetGame);
+
+        // start game
+        function startGame() {
+            playConfirmation();
+            startGameMusic();
+            generateMonsters();
+            startTimer();
+            counter = 15;
+            currentScore = 0;
+            startGameButton.disabled = 'true';
+            high[0].innerHTML = highScore;
+        }
+
+        // audio
+        function startGameMusic() {
+            setTimeout(function() {
+                gameMusic.play();
+            }, 750);
+            gameMusic.volume = 0.4;
+        }
+
+        function playGroan(){
+            audioGroan.play();
+            audioGroan.volume = 1.0;
+        }
+
+        function playConfirmation(){
+            audioConfirmation.play();
+            audioConfirmation.volume = 0.8;
+        }
+
+        function playReset(){
+            audioReset.play();
+            audioReset.volume = 0.8;
+        }
+
+        function playAdvance(){
+            setTimeout(function() {
+                audioAdvance.play();
+            }, 500);
+            audioAdvance.volume = 0.9;
+        }
+
+        function playNewHighScore(){
+            setTimeout(function() {
+                audioNewHighScore.play();
+            }, 1500);
+            audioAdvance.volume = 0.3;
+        }
+
+        function playGameOver(){
+            setTimeout(function() {
+                audioGameOver.play();
+            }, 0);
+            audioAdvance.volume = 0.3;
+        }
+
+        function playTimeout(){
+            setTimeout(function() {
+                audioTimeout.play();
+            }, 100);
+            audioAdvance.volume = 0.3;
+        }
+
+        function resetGameMusic() {
+            gameMusic.pause();
+            gameMusic.currentTime = 0;
+            gameMusic.volume = 0.4;
+        }
+
+        // calcualte current score
+        function calcCurrentScore(){
+            if (currentScore < 500) {
+                currentScore = currentScore + 100;
+            } else if(currentScore >= 500 || currentScore === 1250){
+                currentScore = currentScore + 250;
+            } else currentScore = currentScore + 500;
+            return currentScore;
+        }
+
+        // next level reset
+        function nextLevel(){
+
+            while(gameLeft[0].firstChild){
+                gameLeft[0].removeChild(gameLeft[0].firstChild);
+            }
+
+            while(gameRight[0].firstChild){
+                gameRight[0].removeChild(gameRight[0].firstChild);
+            }
+
+            event.stopPropagation();
+            numberOfMonsters += 5;
+            counter += 15;
+            generateMonsters();
+            playAdvance();
+
+            score[0].innerHTML = calcCurrentScore();
+        }
+
+        // new high score
+        function getHighScore(){
+            if (currentScore > highScore) {
+                let oldScore = highScore;
+                highScore = currentScore;
+                newHighScore = document.getElementById('newHighScore');
+                newHighScore.innerHTML = 'NEW HIGH SCORE!\n\n';
+                showHighScore = document.getElementById('showHighScore');
+                showHighScore.innerHTML = highScore + 'pts +' + '(' + (highScore - oldScore) + ')';
+                playNewHighScore();
+            } else {
+                newHighScore = document.getElementById('newHighScore');
+                newHighScore.innerHTML = ' ';
+                showHighScore = document.getElementById('showHighScore');
+                showHighScore.innerHTML = ' ';
+                return highScore;
+            }
+        }
+
+        // timer functions and countdown
+        function startTimer(){
+            gameTimer = setInterval(function(){
+                timer[0].innerHTML = timeConverter(counter);
+                console.log(counter);
+                counter--;
+                if (counter === 0){
+                    clearInterval(gameTimer);
+                    timer[0].innerHTML = '00:00';
+                    gameTimeout();
+                }
+            }, 1000);
+        }
+
+        function stopTimer(){
+            clearInterval(gameTimer);
+        }
+
+
+        function timeConverter(seconds){
+            let minutes = Math.floor(seconds / 60);
+            seconds = (seconds % 60);
+            return `${(minutes < 10 ? "0" : "")}${minutes}:${(seconds < 10 ? "0" : "")}${seconds}`;
+        }
+        
+        function generateMonsters(){
+            for(i = 0; i < numberOfMonsters; i++) {
+                let randomMonster = Math.floor(Math.random() * monsterArray.length);
+                let monster = document.createElement('img');
+                monster.src = '/images/' + monsterArray[randomMonster];
+                monster.id = 'monsterImage';
+                monster.addEventListener('click', gameOver);
+
+                let randomY = Math.floor(Math.random() * 400 + 1);
+                let randomX = Math.floor(Math.random() * 400 + 1);
+
+                monster.style.top = randomY + 'px';
+                monster.style.left = randomX + 'px';
+                gameLeft[0].appendChild(monster);
+            }
+
+            const gameLeftImages = gameLeft[0].cloneNode(true);
+            gameLeftImages.removeChild(gameLeftImages.lastChild);
+            gameRight[0].appendChild(gameLeftImages);
+
+            gameLeft[0].lastChild.removeEventListener('click', gameOver);
+            gameLeft[0].lastChild.addEventListener('click', nextLevel);
+            gameLeft[0].lastChild.addEventListener('click', playGroan);
+            
+        }
+
+        // reset, gameover, and game timeout
+        function resetGame(){
+            while(gameLeft[0].firstChild){
+                gameLeft[0].removeChild(gameLeft[0].firstChild);
+            }
+
+            while(gameRight[0].firstChild){
+                gameRight[0].removeChild(gameRight[0].firstChild);
+            }
+            stopTimer();
+            numberOfMonsters = 5;
+            currentScore = 0;
+            score[0].innerHTML = currentScore = 0;
+            timer[0].innerHTML = '00:00';
+            startGameButton.disabled = false;
+            playReset();
+            resetGameMusic();
+        }
+
+        function gameOver(){
+            playGameOver();
+            getHighScore();
+            gameOverModal();
+            resetGame();
+        }
+
+        function gameTimeout(){
+            playTimeout();
+            getHighScore();
+            gameOverModal();
+            resetGame();
+        }
+        
+        // modal functions
+        function gameOverModal(){
+            modal.style.display = "block";
+        }
+
+        // create modals
+        let modal = document.getElementById("gameOverModal");
+        let tryBtn = document.getElementsByClassName("tryagain-button")[0];
+        tryBtn.onclick = function() {
+        startGame();
+        modal.style.display = "none";
+        }
+        let span = document.getElementsByClassName("close")[0];
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
