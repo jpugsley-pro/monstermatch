@@ -170,18 +170,18 @@
             clearInterval(gameTimer);
         }
 
+        
 
         function timeConverter(seconds){
             let minutes = Math.floor(seconds / 60);
             seconds = (seconds % 60);
             return `${(minutes < 10 ? "0" : "")}${minutes}:${(seconds < 10 ? "0" : "")}${seconds}`;
         }
-        
         function generateMonsters(){
             for(i = 0; i < numberOfMonsters; i++) {
                 let randomMonster = Math.floor(Math.random() * monsterArray.length);
                 let monster = document.createElement('img');
-                monster.src = './images/' + monsterArray[randomMonster];
+                monster.src = 'images/' + monsterArray[randomMonster];
                 monster.id = 'monsterImage';
                 monster.addEventListener('click', gameOver);
 
